@@ -5,3 +5,5 @@ Vim script with my configuration vimrc file
 2. cd VimSH
 3. chmod +x ./Vim_rc.sh
 4. ./Vim_rc.sh
+5. enter to vim and type: :Pluginstall
+6. Enjoy
