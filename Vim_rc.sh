@@ -31,41 +31,23 @@ set ruler
 " Mostrar el estado de encuadre
 set showmatch
 
-" Autoindentación al presionar Enter en modo insertar
-inoremap <CR> <CR>:autoindent<CR>
-
-" Mapear la tecla F5 para ejecutar el script de Python en la ventana actual
-nnoremap <F5> :!python3 %<CR>
-inoremap <F5> <Esc>:!python3 %<CR>a
-
 " Atajos de teclado para abrir/cerrar el explorador de archivos NERDTree
 nnoremap <F3> :NERDTreeToggle<CR>
 inoremap <F3> <Esc>:NERDTreeToggle<CR>i
 
 " Configuración de complementos con Vim-Plug
 call plug#begin('~/.vim/plugged')
+Plug 'preservim/nerdtree'
 
 " Tema
 Plug 'morhetz/gruvbox'
-
-" Complementos para Python
-Plug 'preservim/nerdtree'
-Plug 'vim-airline/vim-airline'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'ervandew/supertab'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tpope/vim-commentary', {'for': ['sh', 'python', 'markdown']}
-Plug 'ironcamel/vim-script-runner', {'for': ['sh', 'python']}
-Plug 'SirVer/ultisnips', {'for': ['sh', 'python', 'markdown']}
-Plug 'honza/vim-snippets', {'for': ['sh', 'python', 'markdown']}
-Plug 'vim-syntastic/syntastic', {'for': 'python'}
 
 call plug#end()
 
 " Configurar el tema gruvbox
 set background=dark
 colorscheme gruvbox
+
 EOF
 
 echo "Vim, Vim-Plug y la configuración de .vimrc se han instalado y configurado."
