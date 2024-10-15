@@ -1,15 +1,55 @@
 #!/bin/bash
 
-# Instalar Vim
+# Salir inmediatamente si un comando falla
+set -e
+
+# Función para mostrar mensajes informativos
+function info {
+    echo -e "\e[32m[INFO]\e[0m $1"
+}
+
+# Verificar si el script se está ejecutando con permisos de sudo
+if [[ $EUID -ne 0 ]]; then
+   info "Este script necesita ser ejecutado con permisos de sudo."
+   exit 1
+fi
+
+# Actualizar la lista de paquetes
+info "Actualizando la lista de paquetes..."
 sudo apt-get update
-sudo apt-get install vim -y
+
+# Instalar Vim si no está instalado
+if ! command -v vim &> /dev/null
+then
+    info "Instalando Vim..."
+    sudo apt-get install vim -y
+else
+    info "Vim ya está instalado."
+fi
+
+# Verificar e instalar curl si no está instalado
+if ! command -v curl &> /dev/null
+then
+    info "Instalando curl..."
+    sudo apt-get install curl -y
+else
+    info "curl ya está instalado."
+fi
 
 # Descargar Vim-Plug
+info "Descargando Vim-Plug..."
 mkdir -p ~/.vim/autoload
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# Hacer una copia de seguridad del .vimrc existente si existe
+if [ -f ~/.vimrc ]; then
+    info "Creando copia de seguridad de .vimrc existente..."
+    cp ~/.vimrc ~/.vimrc.backup_$(date +%F)
+fi
+
 # Crear el archivo .vimrc
+info "Creando archivo .vimrc..."
 cat <<EOF > ~/.vimrc
 " Habilitar la numeración de líneas
 set number
@@ -38,16 +78,30 @@ inoremap <F3> <Esc>:NERDTreeToggle<CR>i
 " Configuración de complementos con Vim-Plug
 call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
-
-" Tema
 Plug 'morhetz/gruvbox'
-
 call plug#end()
 
 " Configurar el tema gruvbox
 set background=dark
 colorscheme gruvbox
 
+" Remap de navegación para teclado Dvorak
+" QWERTY h,j,k,l → Dvorak d,h,t,n
+nnoremap d h
+nnoremap h j
+nnoremap t k
+nnoremap n l
+
+" Opcional: Remap en modo visual para Dvorak
+vnoremap d h
+vnoremap h j
+vnoremap t k
+vnoremap n l
+
 EOF
 
-echo "Vim, Vim-Plug y la configuración de .vimrc se han instalado y configurado."
+# Instalar los plugins de Vim-Plug
+info "Instalando plugins de Vim-Plug..."
+vim +PlugInstall +qall
+
+info "Vim, Vim-Plug y la configuración de .vimrc se han instalado y configurado correctamente."
