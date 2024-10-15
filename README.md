@@ -47,5 +47,5 @@ Antes de ejecutar el script, asegúrate de tener lo siguiente:
    Puedes clonar este repositorio o simplemente descargar el script `setup_vim_python.sh`.
 
    ```bash
-   git clone https://github.com/tu_usuario/tu_repositorio.git
-   cd tu_repositorio
+   git clone https://github.com/NeoByteMX/VimSH
+   cd VimSH
