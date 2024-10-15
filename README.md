@@ -58,6 +58,8 @@ para usuarios de dvorak, entra con vim en .vimrc
 vim $HOME/.vimrc
 ```
 El resultado será el siguiente:
+
+
 ![image](https://github.com/user-attachments/assets/7598b819-d02a-4573-9bc4-5cb593c16c50)
 
 
