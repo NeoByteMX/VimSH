@@ -150,17 +150,18 @@ set background=dark
 colorscheme gruvbox
 
 " Remap de navegación para teclado Dvorak
+" remuve las comillas de noremap
 " QWERTY h,j,k,l → Dvorak d,h,t,n
-nnoremap d h
-nnoremap h j
-nnoremap t k
-nnoremap n l
+"nnoremap d h
+"nnoremap h j
+"nnoremap t k
+"nnoremap n l
 
 " Opcional: Remap en modo visual para Dvorak
-vnoremap d h
-vnoremap h j
-vnoremap t k
-vnoremap n l
+"vnoremap d h
+"vnoremap h j
+"vnoremap t k
+"vnoremap n l
 
 " --- Configuraciones Adicionales de Plugins ---
 
