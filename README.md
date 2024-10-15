@@ -53,8 +53,12 @@ Antes de ejecutar el script, asegúrate de tener lo siguiente:
    ./setup_vim_python.sh
 
 
-para usuarios de dvorak quitar las comillas del /.vimrc
-
+para usuarios de dvorak, entra con vim en .vimrc
+ ```
+vim $HOME/.vimrc
+```
+El resultado será el siguiente:
+![image](https://github.com/user-attachments/assets/7598b819-d02a-4573-9bc4-5cb593c16c50)
 
 
 ## Verificación
@@ -68,6 +72,7 @@ Cierra y vuelve a abrir Vim para aplicar todos los cambios.
 
 Dentro de Vim, ejecuta:
 :PlugStatus
+
 
 Asegúrate de que todos los plugins estén instalados y no muestren errores.
 
