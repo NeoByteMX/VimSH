@@ -46,16 +46,16 @@ Antes de ejecutar el script, asegúrate de tener lo siguiente:
 
    Puedes clonar este repositorio o simplemente descargar el script `setup_vim_python.sh`.
 
-   ```bash
+   ```
    git clone https://github.com/NeoByteMX/VimSH
    cd VimSH
    chmod +x setup_vim_python.sh
    ./setup_vim_python.sh
-
+   ```
 
 para usuarios de dvorak, entra con vim en .vimrc
  ```
-vim $HOME/.vimrc
+  vim $HOME/.vimrc
 ```
 El resultado será el siguiente:
 
@@ -73,8 +73,9 @@ Cierra y vuelve a abrir Vim para aplicar todos los cambios.
 **Verificar Plugins Instalados:**
 
 Dentro de Vim, ejecuta:
-:PlugStatus
-
+```
+  :PlugStatus
+```
 
 Asegúrate de que todos los plugins estén instalados y no muestren errores.
 
@@ -100,9 +101,9 @@ let mapleader = ","
 Esto te permitirá usar ,ev y ,ed para gestionar entornos virtuales.
 
 **Agregar Más Extensiones a coc.nvim:**
-
-:CocInstall coc-json coc-html coc-css
-
+```
+  :CocInstall coc-json coc-html coc-css
+```
 
 **Personalizar Snippets:**
 
@@ -111,17 +112,21 @@ Agrega tus propios snippets en ~/.vim/UltiSnips/python.snippets para adaptarlos 
 ## Solución de Problemas
 **1. Autocompletado no Funciona:**
 Verifica que coc-pyright esté instalado:
-
-:CocInstall coc-pyright
+```
+  :CocInstall coc-pyright
+```
 
 Asegúrate de que Node.js esté correctamente instalado:
-node -v
-
+```
+  node -v
+```
 
 2. ALE No Muestra Errores de Linting:
 
 Verifica que los linters estén instalados:
-pip3 install flake8 mypy
+```
+  pip3 install flake8 mypy
+```
 
 Revisa la configuración de ALE en .vimrc para asegurarte de que están correctamente definidos.
 
@@ -133,7 +138,9 @@ Comprueba si hay conflictos de mapeo de teclas en tu .vimrc.
 4. Vimspector No Inicia la Depuración:
 Verifica que debugpy esté instalado:
 
+```
 pip3 install debugpy
+```
 Asegúrate de haber configurado correctamente los adaptadores en Vimspector.
 
 Consulta la documentación de Vimspector para configuraciones avanzadas.
