@@ -9,9 +9,9 @@ function info {
 }
 
 # Verificar si el script se está ejecutando con permisos de sudo
-if [[ $EUID -ne 0 ]]; then
-   info "Este script necesita ser ejecutado con permisos de sudo."
-   exit 1
+if [ "$EUID" -eq 0 ]; then
+    echo "Este script no debe ser ejecutado con sudo. Ejecútalo como un usuario normal."
+    exit 1
 fi
 
 # Actualizar la lista de paquetes
@@ -38,19 +38,19 @@ fi
 
 # Descargar Vim-Plug
 info "Descargando Vim-Plug..."
-mkdir -p ~/.vim/autoload
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+mkdir -p "$HOME/.vim/autoload"
+curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Hacer una copia de seguridad del .vimrc existente si existe
-if [ -f ~/.vimrc ]; then
+if [ -f "$HOME/.vimrc" ]; then
     info "Creando copia de seguridad de .vimrc existente..."
-    cp ~/.vimrc ~/.vimrc.backup_$(date +%F)
+    cp "$HOME/.vimrc" "$HOME/.vimrc.backup_$(date +%F)"
 fi
 
 # Crear el archivo .vimrc
 info "Creando archivo .vimrc..."
-cat <<EOF > ~/.vimrc
+cat <<EOF > "$HOME/.vimrc"
 " Habilitar la numeración de líneas
 set number
 
